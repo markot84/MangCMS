@@ -1,15 +1,19 @@
-var sampleApp = angular.module('MangCMS', ['ngRoute','ngMaterial','sideNav','articlesPage','imagesPage','md.data.table']);
+var sampleApp = angular.module('MangCMS', ['ngRoute','ngMaterial','sideNav','articlesModule','imagesPage','md.data.table']);
  
 sampleApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
       when('/articles', {
         templateUrl: 'pages/articles.html',
-        controller: 'getArticles'
+        controller: 'listArticlesController'
     }).
       when('/images', {
         templateUrl: 'pages/images.html',
         controller: 'imagesPageController'
+    }).
+      when('/edit/article/:id',{
+        templateUrl: 'pages/editArticle.html',
+        controller: 'editArticleController'
     }).
       otherwise({
         redirectTo: '/articles'

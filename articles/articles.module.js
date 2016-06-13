@@ -1,46 +1,32 @@
-angular.module('articlesPage',[])
-	.controller('getArticles', function ($scope){
-		$scope.articles = [
-			{
-				"title" : "Title",
-				"content" : "Content"
-			},
-			{
-				"title" : "Title2",
-				"content" : "Content2"
-			}
-		];
-	})
-	.controller('sampleController', function ($scope) {
-		$scope.selected = [];
+angular.module('articlesModule',[])
+	.service('articlesService', ['$http', function($http) {
+		var articlesService = {};
+		
+		articlesService.list = function(){
+			return $http.get('articles/articles.json');
+		}
 
-		$scope.query = {
-			order: 'name',
-			limit: 5,
-			page: 1
-		};
+	return articlesService;
+   	}])
+	.controller('listArticlesController', ['$scope', 'articlesService', function ($scope, articlesService) {
+   		articlesService.list().success(function(response){
+   			$scope.articles = response;
+   		});
 
-		$scope.desserts = [
-			{
-				"name" : "Profiterole",
-				"calories" : "340",
-				"fat" : "3",
-				"carbs" : "4",
-				"protein" : "5",
-				"sodium" : "6",
-				"calcium" : "7",
-				"iron" : 8
-			},
-			{
-				"name" : "Sou",
-				"calories" : "340",
-				"fat" : "3",
-				"carbs" : "4",
-				"protein" : "5",
-				"sodium" : "6",
-				"calcium" : "7",
-				"iron" : 84
-			}
-		];
+   		$scope.selected = [];
+   		$scope.query = {
+    		order: 'name',
+    		limit: 5,
+    		page: 1
+  		};
 
-});
+  		function success(articles) {
+    		$scope.articles = articles;
+  		}
+
+  		$scope.getArticles = function () {
+  		};
+ 	}])
+ 	.controller('editArticleController', ['$scope', '$routeParams' , function($scope,$routeParams) {
+ 		$scope.articleId = $routeParams.id;
+ 	}]);
