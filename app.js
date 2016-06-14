@@ -1,4 +1,4 @@
-var sampleApp = angular.module('MangCMS', ['ngRoute','ngMaterial','sideNav','articlesModule','imagesPage','md.data.table']);
+var sampleApp = angular.module('MangCMS', ['ngRoute','ngMaterial','sideNav','articlesModule','imagesPage','md.data.table','dialogDemo1']);
  
 sampleApp.config(['$routeProvider',
   function($routeProvider) {

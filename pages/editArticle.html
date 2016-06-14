@@ -1,1 +1,18 @@
-<p>Edit {{articleId}}</p>
+<div layout="row">
+	<md-input-container flex>
+    	<label>Title</label>
+    	<input ng-model="article.title">
+	</md-input-container>
+</div>
+<div layout="row">
+	<md-input-container flex>
+		<label>Content</label>
+		<textarea ng-model="article.content" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+	</md-input-container>
+</div>
+<div layout="row" layout-align="end center">
+	<md-button class="md-primary md-raised"><md-icon style="margin-top:4px" class="material-icons">edit</md-icon></md-button>
+	<div ng-controller="AppCtrl" class="md-padding" id="popupContainer" ng-cloak>
+		<md-button class="md-primary md-raised" ng-click="showAlert($event)" flex="100">Alert Dialog</md-button>
+	</div>
+</div>
