@@ -1,5 +1,5 @@
-angular.module('dialogDemo1', ['ngMaterial'])
-.controller('AppCtrl', function($scope, $mdDialog, $mdMedia) {
+angular.module('modal', ['ngMaterial'])
+.controller('modalController', function($scope, $mdDialog, $mdMedia) {
   $scope.status = '  ';
   $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
   $scope.showAlert = function(ev) {
@@ -10,7 +10,7 @@ angular.module('dialogDemo1', ['ngMaterial'])
       $mdDialog.alert()
         .parent(angular.element(document.querySelector('#popupContainer')))
         .clickOutsideToClose(true)
-        .title($scope.messages.success)
+        .title($scope.message.success)
         .textContent('You can specify some description text in here.')
         .ariaLabel('Alert Dialog Demo')
         .ok('Got it!')

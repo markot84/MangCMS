@@ -1,4 +1,4 @@
-var sampleApp = angular.module('MangCMS', ['ngRoute','ngMaterial','sideNav','articlesModule','imagesPage','md.data.table','dialogDemo1']);
+var sampleApp = angular.module('MangCMS', ['ngRoute','ngMaterial','sideNav','articlesModule','imagesPage','md.data.table','modal']);
  
 sampleApp.config(['$routeProvider',
   function($routeProvider) {
@@ -9,9 +9,13 @@ sampleApp.config(['$routeProvider',
     }).
       when('/images', {
         templateUrl: 'pages/images.html',
-        controller: 'imagesPageController'
+        controller: 'listImagesController'
     }).
       when('/edit/article/:id',{
+        templateUrl: 'pages/editArticle.html',
+        controller: 'editArticleController'
+    }).
+      when('/add/article',{
         templateUrl: 'pages/editArticle.html',
         controller: 'editArticleController'
     }).
@@ -23,5 +27,5 @@ sampleApp.config(['$routeProvider',
 sampleApp.config(function($mdThemingProvider) {
   $mdThemingProvider.theme('default')
     .primaryPalette('red')
-    .accentPalette('brown');
+    .accentPalette('purple');
 });
