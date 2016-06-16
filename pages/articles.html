@@ -21,8 +21,8 @@
       <tr md-row md-select="article" md-select-id="id" md-auto-select ng-repeat="article in articles | filter : articleSearch ">
         <td md-cell>{{article.title}}</td>
         <td md-cell>{{article.content}}</td>
-        <td md-cell><md-button ng-href="#/edit/article/{{article.id}}"><md-icon style="margin-top:4px" class="material-icons">edit</md-icon></md-button></td>
-        <td md-cell><md-button ng-click="deleteArticle(article.id)"><md-icon style="margin-top:4px" class="material-icons">delete</md-icon></md-button></td>
+        <td md-cell><md-button ng-href="#/edit/article/{{article.id}}" class="md-raised md-primary"><md-icon style="margin-top:4px" class="material-icons">edit</md-icon></md-button></td>
+        <td md-cell><md-button ng-click="deleteArticle(article.id)" class="md-raised md-primary"><md-icon style="margin-top:4px" class="material-icons">delete</md-icon></md-button></td>
       </tr>
     </tbody>
   </table>

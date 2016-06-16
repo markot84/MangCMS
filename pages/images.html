@@ -1,11 +1,20 @@
+<md-content md-theme="default" layout-gt-sm="row" layout-padding>
+    <div>
+      	<md-input-container>
+        	<label>Search for an image</label>
+        	<input ng-model="imageSearch">
+		</md-input-container>
+	</div>
+</md-content>
+
 <md-grid-list
-        md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="5"
+        md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="6"
         md-row-height-gt-md="1:1" md-row-height="2:2"
         md-gutter="12px" md-gutter-gt-sm="8px" >   
-    <md-grid-tile style="background-image:url('imgs/{{image.img_path}}');background-size:cover;background-repeat:no-repeat" ng-repeat="image in images" layout="row">
+    <md-grid-tile style="background-image:url('imgs/{{image.img_path}}');background-size:cover;background-repeat:no-repeat" ng-repeat="image in images | filter:imageSearch" layout="row">
       <md-grid-tile-footer layout="column"> 
-      	<md-button ng-click="deleteArticle(article.id)"><md-icon style="margin-top:4px" class="material-icons">edit</md-icon></md-button>
-        <md-button ng-click="deleteArticle(article.id)"><md-icon style="margin-top:4px" class="material-icons">delete</md-icon></md-button>
+      	<md-button ng-click="deleteArticle(article.id)" class="md-raised md-primary"><md-icon style="margin-top:4px" class="material-icons">edit</md-icon></md-button>
+        <md-button ng-click="deleteArticle(article.id)" class="md-raised md-primary"><md-icon style="margin-top:4px" class="material-icons">delete</md-icon></md-button>
       </md-grid-tile-footer>
     </md-grid-tile>
 </md-grid-list>
