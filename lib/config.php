@@ -4,7 +4,7 @@ class Database {
 	const SERVER_NAME = "localhost";
 	const USERNAME = "root";
 	const PASSWORD = "mk567666";
-	const DB_NAME = "MangCMS";
+	const DB_NAME = "personal_cms";
 
 	protected $conn;
 

@@ -1,15 +1,18 @@
-<div layout="row">
-	<md-input-container flex>
-    	<label>Title</label>
-    	<input ng-model="article.title">
-	</md-input-container>
+<form name="form" ng-submit="form.$valid && saveArticle()" novalidate>
+	<div layout="row">
+		<md-input-container flex>
+	    	<label>Title</label>
+	    	<input name="title" ng-model="article.title" required>
+	    	<span ng-show="(form.$submitted || form.title.$touched) && form.title.$invalid" class="md-caption">Title is required</span>
+		</md-input-container>
+	</div>
+	<div layout="row">
+		<md-input-container flex>
+			<textarea name="content" ckeditor="editorOptions" ng-model="article.content" required></textarea>
+			<span ng-show="(form.$submitted || form.content.$touched) && form.content.$invalid" class="md-caption">Content is required</span>
+		</md-input-container>
+	</div>
+	<div layout="row" layout-align="end center">
+		<md-button class="md-accent md-raised" type="submit"><md-icon style="margin-top:4px" class="material-icons">save</md-icon></md-button>
 </div>
-<div layout="row">
-	<md-input-container flex>
-		<label>Content</label>
-		<textarea ng-model="article.content" md-maxlength="150" rows="5" md-select-on-focus></textarea>
-	</md-input-container>
-</div>
-<div layout="row" layout-align="end center">
-	<md-button class="md-primary md-raised" ng-click="saveArticle()"><md-icon style="margin-top:4px" class="material-icons">save</md-icon></md-button>
-</div>
+</form>

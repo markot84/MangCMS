@@ -58,7 +58,7 @@ class Article {
 
 	public function getArticle($articleId){
 
-		$conn = new mysqli('localhost','root','mk567666','MangCMS');
+		$conn = new mysqli('localhost','root','mk567666','personal_cms');
 
 		$article = [];
 
@@ -67,7 +67,6 @@ class Article {
 			$stmt->bind_param("d", $articleId); 
 			$stmt->execute(); 
 			$stmt->bind_result($id,$title,$content);
-
 			while ($stmt->fetch()) {
 				$article = [
 					"id" => $id,
@@ -92,6 +91,8 @@ class Article {
 		}
 
 		$result = $database->query($sql);
+
+
 
 		$response = [
 			'success' => ($result ? true : false),

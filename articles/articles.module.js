@@ -1,8 +1,6 @@
 angular.module('articlesModule',[])
-	.service('articlesService', ['$http', function($http) {
-		var articlesService = {};
-		
-		articlesService.list = function(data){
+	.service('articlesService', ['$http', function($http) {		
+		this.list = function(data){
 			return $http({
 				    	url: 'actions/articles.php?action=listArticles',
 					    method: "GET",
@@ -10,7 +8,7 @@ angular.module('articlesModule',[])
 				 	});
 		}
 
-		articlesService.get = function(data){
+		this.get = function(data){
 			return $http({
 				    	url: 'actions/articles.php?action=getArticle',
 					    method: "GET",
@@ -18,7 +16,7 @@ angular.module('articlesModule',[])
 				 	});
 		}
 
-		articlesService.save = function(data){
+		this.save = function(data){
 			return $http({
 				    	url: 'actions/articles.php?action=saveArticle',
 					    method: "GET",
@@ -26,15 +24,13 @@ angular.module('articlesModule',[])
 				 	});
 		}
 
-		articlesService.delete = function(data){
+		this.delete = function(data){
 			return $http({
 				    	url: 'actions/articles.php?action=deleteArticle',
 					    method: "GET",
 					    params: data
 				 	});
 		}
-
-	return articlesService;
    	}])
 	.controller('listArticlesController', ['$scope', 'articlesService', '$mdDialog', '$mdMedia', function ($scope, articlesService, $mdDialog, $mdMedia) {
    		$scope.selected = [];

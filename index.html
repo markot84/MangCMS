@@ -10,53 +10,60 @@
     <script src="bower_components/angular-animate/angular-animate.min.js"></script>
     <script src="bower_components/angular-aria/angular-aria.min.js"></script>
     <script src="bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="bower_components/ng-ckeditor/ng-ckeditor.min.js"></script>
     <script type="text/javascript" src="bower_components/angular-material-data-table/dist/md-data-table.min.js"></script>
+    <script src="//cdn.ckeditor.com/4.5.6/standard/ckeditor.js"></script> 
 
     <script src="app.js"></script>
     <script src="sideNav/sideNav.module.js"></script>
     <script src="modal.module.js"></script>
     <script src="articles/articles.module.js"></script>
     <script src="images/images.module.js"></script>
+    <script src="filters.module.js"></script>
+    <script src="authService.js"></script>
   </head>
  
   <body ng-app="MangCMS">
-    <div ng-controller="sideNavController" layout="column" ng-cloak>
-  <div layout="row" flex="100">
-    <md-sidenav
-        class="md-sidenav-left"
-        md-component-id="left"
-        md-is-locked-open="$mdMedia('gt-md')"
-        md-disable-backdrop
-        md-whiteframe="4">
-      <md-toolbar class="md-primary">
-        <h1 class="md-toolbar-tools">Welcome Demo User</h1>
-      </md-toolbar>
-      <md-content layout-padding ng-controller="LeftCtrl">
-        <md-button ng-click="close()" class="md-primary" hide-gt-md>
-          Close Sidenav Left
-        </md-button>
-        <div layout="row">
-          <md-button ng-href="#/articles" class="md-accent">Articles</md-button>
-        </div>
-        <div layout="row">
-          <md-button ng-href="#/images" class="md-accent">Image Gallery</md-button>
-        </div>
-      </md-content>
-    </md-sidenav>
-    <md-content flex layout-padding ng-view>
-
-        <!-- TOGGLE RIGHT SIDENAV BUTTON
-        <div>
-          <md-button ng-click="toggleRight()"
-            ng-hide="isOpenRight()"
-            class="md-primary">
-            Toggle right
+    <div ng-controller="sideNavController" layout="column" ng-cloak  ng-show="{{isLoggedIn}}">
+      <div layout="row" flex="100">
+        <md-sidenav
+          class="md-sidenav-left"
+          md-component-id="left"
+          md-is-locked-open="$mdMedia('gt-md')"
+          md-disable-backdrop
+          md-whiteframe="4"
+         >
+        <md-toolbar class="md-primary">
+          <h1 class="md-toolbar-tools">Welcome Demo User</h1>
+        </md-toolbar>
+        <md-content layout-padding ng-controller="LeftCtrl">
+          <md-button ng-click="close()" class="md-primary" hide-gt-md>
+            Close Sidenav Left
           </md-button>
-        </div>
-      </div>
-      -->
+          <div layout="row">
+            <md-button ng-href="#/articles" class="md-accent md-raised">Articles</md-button>
+          </div>
+          <div layout="row">
+            <md-button ng-href="#/images" class="md-accent md-raised">Image Gallery</md-button>
+          </div>
+        </md-content>
+      </md-sidenav>
+    </div>
+    </div>
+      <md-content flex ng-view>
 
-    </md-content>
+          <!-- TOGGLE RIGHT SIDENAV BUTTON
+          <div>
+            <md-button ng-click="toggleRight()"
+              ng-hide="isOpenRight()"
+              class="md-primary">
+              Toggle right
+            </md-button>
+          </div>
+        </div>
+        -->
+
+      </md-content>
 
     <!--THE RIGHT SIDE OF SIDENAV
 
@@ -79,8 +86,6 @@
     </md-sidenav>
 
     -->
-  
-  </div>
-</div>
+
   </body>
 </html>
